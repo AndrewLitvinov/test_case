@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "test-case"
+version = "0.1.0"
+description = "Test task for separating messages in html format"
+authors = ["Andrew Litvinov <and1234567890@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+beautifulsoup4 = "^4.12.2"
+lxml = "^4.9.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
