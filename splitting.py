@@ -1,6 +1,7 @@
 from collections.abc import Generator
 
 from bs4 import BeautifulSoup
+from bs4.element import Tag
 
 from exceptions import SplittingException
 
@@ -19,7 +20,7 @@ class HtmlParams:
         self.result = []
 
 
-def create_html_by_tags(tags: list) -> str:
+def create_html_by_tags(tags: list[str]) -> str:
     '''Create start or end tags by list.'''
     return SPLITTER.join(tags)
 
@@ -30,7 +31,7 @@ def check_possibility(html: HtmlParams) -> None:
         raise SplittingException('Impossible to split: ' + html.text)
 
 
-def get_tag_view(tag, tag_text: str) -> str:
+def get_tag_view(tag: Tag, tag_text: str) -> str:
     '''Get the name of the block tag with their attributes.'''
     if len(tag.attrs) > 0:
         return tag_text[:tag_text.find('>') + 1]
@@ -38,7 +39,8 @@ def get_tag_view(tag, tag_text: str) -> str:
 
 
 def exclude_empty_tags(html: HtmlParams) -> str:
-    '''Remove block tags that may remain at the end of the message.'''
+    '''Remove block tags that may remain at the end of the message
+    because of splitting.'''
     text = html.text
     i = len(html.curr_block_tags) - 1
     while (text[len(text)-len(html.curr_block_tags[i]):] ==
@@ -49,7 +51,7 @@ def exclude_empty_tags(html: HtmlParams) -> str:
     return text + create_html_by_tags(end_tags)
 
 
-def split_tags(parent_tag, html_params: HtmlParams) -> None:
+def split_tags(parent_tag: Tag, html_params: HtmlParams) -> None:
     '''Recursive function for splitting.'''
     for tag in parent_tag.contents:
         if tag == '\n':

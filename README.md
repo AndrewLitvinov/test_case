@@ -43,5 +43,12 @@ poetry install
 После установки возможно выполнить проверку командой из командной строки:
 
 ```
-python split_msg.py --max-len=250 ./test-1.html
+py split_msg.py --max-len=250 ./test-1.html
+```
+
+
+Для запуска unit-тестов выполните команду:
+
+```
+ py test_dividing.py -v
 ```
