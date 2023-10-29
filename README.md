@@ -14,31 +14,27 @@ git clone git@github.com:AndrewLitvinov/test_case.git
 cd test_case
 ```
 
-Cоздать и активировать виртуальное окружение:
+Установить и настроить poetry:
 
 ```
-py -m venv venv
+pip install poetry
 ```
 
-* Если у вас Linux/macOS
+```
+poetry config virtualenvs.in-project true
+```
 
-    ```
-    source venv/bin/activate
-    ```
 
-* Если у вас windows
-
-    ```
-    source venv/scripts/activate
-    ```
-
-Установить зависимости из файла pyproject.toml:
+Установить зависимости и активировать виртуальное окружение:
 
 
 ```
 poetry install
 ```
 
+```
+source venv/scripts/activate
+```
 
 После установки возможно выполнить проверку командой из командной строки:
 
