@@ -120,15 +120,3 @@ def split_html(source: str, max_len: int) -> Generator[str]:
 
         for part in html_params.result:
             yield part
-
-
-if __name__ == '__main__':
-    string = '''<p>
-            <a>Google search1</a>
-            <b><strong>
-                <a>Goo</a>
-            </strong></b>
-        </p>'''
-
-    result = split_html(string, 44)
-    print(*result)
