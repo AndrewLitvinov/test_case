@@ -32,9 +32,6 @@ poetry config virtualenvs.in-project true
 poetry install
 ```
 
-```
-source .venv/scripts/activate
-```
 
 После установки возможно выполнить проверку командой из командной строки:
 
